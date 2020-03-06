@@ -1,0 +1,7 @@
+div {
+  max-width: 30%;
+  border: 1px solid grey;
+  margin-top: 1%;
+  padding: 1%;
+  visibility: hidden;
+}
