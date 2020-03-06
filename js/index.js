@@ -1,28 +1,22 @@
-function showNextHideOthers(current, btnClicked, steps) {
+function manageVisibility(currentStep, btnClicked, allStepsDiv) {
   let indexToShow;
   if (btnClicked.classList.contains("prev"))
-    indexToShow = current - 1;
+    indexToShow = currentStep - 1;
   else
-    indexToShow = current + 1;
+    indexToShow = currentStep + 1;
 
-  for (let i = 0; i < steps.length; ++i) {
-    if (i === indexToShow) {
-      steps[i].style.visibility = "visible";
-    } else {
-      steps[i].style.visibility = "hidden";
-    }
-  }
+  allStepsDiv[currentStep].style.visibility = "hidden";
+  allStepsDiv[indexToShow].style.visibility = "visible";
 }
 
 function runLoginStepper() {
   steps = document.querySelectorAll("div");
-  console.log(steps)
   steps[0].style.visibility = "visible";
 
   for (let i = 0; i < steps.length; ++i) {
     steps[i].addEventListener("click", function (event) {
       if (event.target.nodeName === "BUTTON")
-        showNextHideOthers(i, event.target, steps);
+        manageVisibility(i, event.target, steps);
     });
   }
 }
